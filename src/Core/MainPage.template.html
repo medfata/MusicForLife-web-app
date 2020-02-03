@@ -1,0 +1,28 @@
+<ul class="list-inline text-center">
+  <li class="list-inline-item">
+    <span>Album name :</span>
+  </li>
+  <li class="list-inline-item">
+    <select id="album" (change)="filterbyalbum()" class="form-control">
+      <option selected="" value=""></option>  
+      <option  *ngFor="let option of data.getalbums()" [value]="option.name">{{option.name}}</option>
+    </select>
+  </li>
+  <li class="list-inline-item"><span>Album Artist :</span></li>
+  <li class="list-inline-item">
+    <select id="artist" (change)="filterbyartist()"  class="form-control">
+      <option selected="" value=""></option>  
+      <option  *ngFor="let option of data.getartists()" [value]="option.name">{{option.name}}</option>
+    </select>
+  </li>
+</ul>
+  <ul class="list-group" >
+    <li class="list-item" *ngFor='let album of albums' style="margin: 5px auto; list-style: none;">
+      <span class="pull-right"> <img [src]="album.image" alt="album.image" class="img-responsive" style="max-width: 100px;"></span>
+      <span style="margin-right: 10px ;">Album Name : {{album.name}}</span>
+      <span style="margin-right: 10px ;">Album Artist :{{getartistname(album.artist_id).name}}</span>
+      <button (click)="playAlbum(album.id)" class="btn btn-primary">Play</button>
+    </li>
+  </ul>
+
+

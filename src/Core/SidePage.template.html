@@ -1,0 +1,25 @@
+
+<div class="card" >
+    <img class="card-img-top" style="max-width: auto; max-height:250px ;" [src] ="album.image">
+    <div class="card-body">
+        <h3 class="card-title m-0 p-0" style="display: inline; width: 50%; float: left;">{{album.name}}</h3>
+        <button style="display: inline; width: 50%; float: right;text-align: center;" class="btn btn-primary">Play All album</button>
+    </div>
+    <ul class="card-text list-inline">
+        <li class="inline-list-item">
+            <img class="img-responsive" style="max-width: 100px;float: left; border-radius: 20%;"  [src]="artist.image">
+        </li>
+        <li class="inline-list-item font-weight-normal" style="margin-left: 150px; line-height: 55px;">Artist Name :<span class="font-weight-bold">{{artist.name}}</span></li>
+    </ul>
+    <audio id="audio" style="margin: auto;"  controls>
+        <source type="audio/mpeg" [src]="src">
+    </audio>
+    <div class="font-weight-bold" >Song List :</div>
+    <ul class="list-group" style="list-style: none;" >
+        <li style="margin-top: 10px;"  *ngFor="let song of songList"  class="list-item" >
+            <a style="text-decoration: none; width: 100%; height: 30px;line-height: 20px;" class="badge badge-primary" href="#" (click)="playsong(song.id)">
+            <span style="float: left;">Song Name : {{song.name}}</span>
+            <span style="float: right; padding-right: 10px;">categorie : {{song.categorie}}</span>
+        </a></li>
+    </ul>
+</div>
