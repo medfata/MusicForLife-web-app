@@ -36,13 +36,35 @@ export class sidepage{
              
             
             } );
+            
     }
 
   
      playsong(id:number){
         this.src = this.songList.find(song => song.id == id).filename;
+        document.getElementById("audio").autoplay = true;
         document.getElementById("audio").load();
-        document.getElementById("audio").play();
+
+     }
+
+
+     playAlbum(){
+         let audio = document.getElementById("audio");
+         this.src = this.songList[0].filename;
+         audio.play();
+        if(this.songList.length>0){
+            audio.addEventListener('ended',() => {
+                for(let i=1;i<this.songList.length;i++){
+                    if(this.src != this.songList[this.songList.length-1].filename){
+                    this.src = this.songList[i].filename;    
+             
+                    audio.load();   
+                    audio.play();      
+                }
+                  }
+            },true)
+            
+        }
      }
 
 }
